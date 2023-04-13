@@ -5,11 +5,14 @@ import React, { useState } from 'react';
 
 import { BrowserRouter, Routes, Route} from "react-router-dom";
 
+
+
 import Dashboard from  './components/Dashboard'
 import Preferences  from  './components/Preferences'
 import Login from './components/login/Login';
 import useToken from './components/useToken';
 import TopBar from './components/TopBar';
+import Footer from './components/Footer';
 
 function setToken(userToken) {
   sessionStorage.setItem('token', JSON.stringify(userToken));
@@ -21,14 +24,17 @@ function App() {
   if(!token) {
     return (
       <div className="App">
-        <header className="App-header">
-          <TopBar />
-        </header>
+        {/* <header className="App-header"> */}
+        <TopBar />
+        {/* </header> */}
+
         <BrowserRouter>
           <Routes>
             <Route path="*" element={<Login setToken={setToken} />} />
           </Routes>
         </BrowserRouter>
+
+        <Footer />
 
       </div>
     );
